@@ -32,6 +32,7 @@ def pytest_addoption(parser: Parser) -> None:
 def pytest_fixture_setup(
     fixturedef: FixtureDef[object], request: SubRequest
 ) -> Generator[None, object, object]:
+    _show_fixture_action(fixturedef, request.config, "PRESETUP")
     try:
         return (yield)
     finally:
