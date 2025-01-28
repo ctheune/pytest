@@ -31,6 +31,7 @@ def pytest_addoption(parser: Parser) -> None:
 def pytest_fixture_setup(
     fixturedef: FixtureDef[object], request: SubRequest
 ) -> Generator[None, None, None]:
+    _show_fixture_action(fixturedef, "PRESETUP")
     yield
     if request.config.option.setupshow:
         if hasattr(request, "param"):
